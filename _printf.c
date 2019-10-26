@@ -8,12 +8,18 @@ void printchar(va_list argumentos)
 	st = va_arg(argumentos, int);
 	_putchar(st);
 }
+
 void printstring(va_list argumentos)
 {
 	char *st;
+	int i = 0;
 
 	st = va_arg(argumentos, char *);
-	printf("%s", st);
+	while (st[i] != '\0')
+	{
+		_putchar(st[i]);
+		i++;
+	}
 }
 
 int _printf(const char *format, ...)
