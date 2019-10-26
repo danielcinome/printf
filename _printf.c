@@ -22,6 +22,43 @@ void printstring(va_list argumentos)
 	}
 }
 
+void printint(va_list argumentos)
+{
+	int n, a, b, c, d, s[1000000];
+	
+	n = va_arg(argumentos, int);
+
+	d = 0;
+	a = n / 10;
+	b = n % 10;
+	if (a <= 9)
+	{
+		s[0] = b;
+		s[1] = a;
+		_putchar(s[1] + '0');
+		_putchar(s[0] + '0');
+	}
+	else
+	{
+		while (n > 9)
+		{
+			b = n % 10;
+			n = n / 10;
+			s[d] = b;
+			if (n <= 9)
+			{
+				s[d + 1] = n;
+			}
+			++d;
+		}
+		for (c = d ; c >= 0 ; c--)
+		{
+			_putchar(s[c] + '0');
+		}
+//		_putchar('\n');
+	}
+}
+
 int _printf(const char *format, ...)
 {
 	va_list argumentos;
@@ -30,6 +67,7 @@ int _printf(const char *format, ...)
 	op_t ops[] = {
 		{"c", printchar},
 		{"s", printstring},
+		{"i", printint},
 		{NULL, NULL}
 	};
 	va_start(argumentos, format);
@@ -68,12 +106,15 @@ int _printf(const char *format, ...)
 
 int main()
 {
-
-	_printf("Let's try to printf a simple sentence.\n");
-	printf("Let's try to printf a simple sentence.\n");
+	int len;
+    	int len2;
+	len = 350000;
+	len2 = printf("Let's try to printf a simple sentence.\n");
 	_printf("Character:[%c]\n", 'H');
 	printf("Character:[%c]\n", 'H');
 	_printf("String:[%s]\n", "I am a string !");
 	printf("String:[%s]\n", "I am a string !");
+	_printf("Length:[%i]\n", len);
+    	printf("Length:[%i]\n", len2);
 	return(0);
 }
