@@ -13,12 +13,13 @@ int _printf(const char *format, ...)
 	va_list argumentos;
 	int i = 0, j = 0, d = 0;
 
-	if (format == NULL)
-		return (-1);
-
 	op_t ops[] = {{"c", printchar}, {"s", printstring},
 	{"i", printint}, {"d", printint}, {NULL, NULL}
 	};
+
+	if (format == NULL)
+		return (-1);
+
 	va_start(argumentos, format);
 	while (format[i]) /* recorrer format */
 	{
