@@ -1,70 +1,6 @@
 #include <stdio.h>
-#include "holberton.h"
 #include <stdarg.h>
-
-void printchar(va_list argumentos)
-{
-	int st;
-	st = va_arg(argumentos, int);
-	_putchar(st);
-}
-
-void printstring(va_list argumentos)
-{
-	char *st;
-	int i = 0;
-
-	st = va_arg(argumentos, char *);
-	while (st[i] != '\0')
-	{
-		_putchar(st[i]);
-		i++;
-	}
-}
-
-void printint(va_list argumentos)
-{
-	int n, a, b, c, d, s[1000000];
-
-	n = va_arg(argumentos, int);
-	/*si el número es negativo*/
-	if(n < 0)
-	{
-		_putchar('-');
-	/*multiplico por -1 para poder quitar el signo*/
-	n = n * -1;
-	}
-
-	d = 0;
-	a = n / 10;
-	b = n % 10;
-	if (a <= 9)
-	{
-		s[0] = b;
-		s[1] = a;
-		_putchar(s[1] + '0');
-		_putchar(s[0] + '0');
-	}
-	else
-	{
-		while (n > 9)
-		{
-			b = n % 10;
-			n = n / 10;
-			s[d] = b;
-			if (n <= 9)
-			{
-				s[d + 1] = n;
-			}
-			++d;
-		}
-		for (c = d ; c >= 0 ; c--)
-		{
-			_putchar(s[c] + '0');
-		}
-/*		_putchar('\n'); */
-	}
-}
+#include "holberton.h"
 
 int _printf(const char *format, ...)
 {
@@ -80,9 +16,7 @@ int _printf(const char *format, ...)
 		{NULL, NULL}
 	};
 	va_start(argumentos, format);
-
-	/* recorrer format */
-	while (format[i])
+	while (format[i]) /* recorrer format */
 	{
 		if (format[i] == 92)
 		{
@@ -95,48 +29,29 @@ int _printf(const char *format, ...)
 		if (format[i] == 37)
 		{
 			j = 0;
-			/*Si el caracter siguiente no es %*/
-			if (format[i + 1] != 37)
-			while (ops[j].op != NULL)
+			if (format[i + 1] != 37) /*Si el caracter siguiente no es %*/
 			{
-				if (format[i + 1] == *(ops[j].op))
+				while (ops[j].op != NULL)
 				{
-					(ops[j].f)(argumentos);
-					i = i + 2;
-					break;
+					if (format[i + 1] == *(ops[j].op))
+					{
+						(ops[j].f)(argumentos);
+						i = i + 2;
+						break;
+					}
+					j++;
 				}
-				j++;
+
 			}
-			/*si el caracter siguiente es % avanzo 1 pos*/
-			if(format[i + 1] == 37)
-			{	i++;
+
+			if (format[i + 1] == 37) /*si el caracter siguiente es % avanzo 1 pos*/
+			{
+				i++;
 				d = d + 1; /* resto lo que me mueva*/
 			}
 		}
 		_putchar(format[i]);
 		i++;
 	}
-	
 	return (i - d);
-}
-
-int main()
-{
-	int len;
-    	int len2;
-	len = -3500.00;
-	len2 = printf("Let's try to %% printf a simple sentence.\n");
-	_printf("Character:[%c]\n", 'H');
-	printf("Character:[%c]\n", 'H');
-	_printf("String:[%s]\n", "I am a string !");
-	printf("String:[%s]\n", "I am a string !");
-	_printf("Length:[%i]\n", len);
-    	printf("Length:[%i]\n", len2);
-	_printf("Negative:[%d]\n", -762534);
-	printf("Negative:[%d]\n", -762534);
-	len = _printf("Percent:[%%]\n");
-	len2 = printf("Percent:[%%]\n");
-	_printf("Len:[%d]\n", len);
-	printf("Len:[%d]\n", len2);
-	return(0);
 }
