@@ -13,6 +13,9 @@ int _printf(const char *format, ...)
 	va_list argumentos;
 	int i = 0, j = 0, d = 0;
 
+	if (format == NULL)
+		return (-1);
+
 	op_t ops[] = {{"c", printchar}, {"s", printstring},
 	{"i", printint}, {"d", printint}, {NULL, NULL}
 	};
@@ -21,7 +24,7 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] == 92)
 		{
-			if (format[i + 1] == 32 || format[i + 1] == 92 || format[i + 1] == 37)
+			if (format[i + 1] == 34 || format[i + 1] == 92 || format[i + 1] == 39)
 			{
 				_putchar(format[i]);
 				i++;
