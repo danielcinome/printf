@@ -29,9 +29,11 @@ void printint(va_list argumentos)
 	n = va_arg(argumentos, int);
 	/*si el número es negativo*/
 	if(n < 0)
+	{
 		_putchar('-');
 	/*multiplico por -1 para poder quitar el signo*/
 	n = n * -1;
+	}
 
 	d = 0;
 	a = n / 10;
@@ -92,6 +94,8 @@ int _printf(const char *format, ...)
 		if (format[i] == 37)
 		{
 			j = 0;
+			/*Si el caracter siguiente no es %*/
+			if (format[i + 1] != 37)
 			while (ops[j].op != NULL)
 			{
 				if (format[i + 1] == *(ops[j].op))
@@ -102,6 +106,9 @@ int _printf(const char *format, ...)
 				}
 				j++;
 			}
+			/*si el caracter siguiente es % avanzo 1 pos*/
+			if(format[i + 1] == 37)
+				i++;
 		}
 		_putchar(format[i]);
 		i++;
@@ -124,5 +131,9 @@ int main()
     	printf("Length:[%i]\n", len2);
 	_printf("Negative:[%d]\n", -762534);
 	printf("Negative:[%d]\n", -762534);
+	len = _printf("Percent:[%%]\n");
+	len2 = printf("Percent:[%%]\n");
+	_printf("Len:[%d]\n", len);
+	printf("Len:[%d]\n", len2);
 	return(0);
 }
