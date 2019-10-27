@@ -25,8 +25,13 @@ void printstring(va_list argumentos)
 void printint(va_list argumentos)
 {
 	int n, a, b, c, d, s[1000000];
-	
+
 	n = va_arg(argumentos, int);
+	/*si el número es negativo*/
+	if(n < 0)
+		_putchar('-');
+	/*multiplico por -1 para poder quitar el signo*/
+	n = n * -1;
 
 	d = 0;
 	a = n / 10;
@@ -55,7 +60,7 @@ void printint(va_list argumentos)
 		{
 			_putchar(s[c] + '0');
 		}
-//		_putchar('\n');
+/*		_putchar('\n'); */
 	}
 }
 
@@ -68,6 +73,7 @@ int _printf(const char *format, ...)
 		{"c", printchar},
 		{"s", printstring},
 		{"i", printint},
+		{"d", printint},
 		{NULL, NULL}
 	};
 	va_start(argumentos, format);
@@ -108,13 +114,15 @@ int main()
 {
 	int len;
     	int len2;
-	len = 350000;
-	len2 = printf("Let's try to printf a simple sentence.\n");
+	len = -3500.00;
+	len2 = printf("Let's try to %% printf a simple sentence.\n");
 	_printf("Character:[%c]\n", 'H');
 	printf("Character:[%c]\n", 'H');
 	_printf("String:[%s]\n", "I am a string !");
 	printf("String:[%s]\n", "I am a string !");
 	_printf("Length:[%i]\n", len);
     	printf("Length:[%i]\n", len2);
+	_printf("Negative:[%d]\n", -762534);
+	printf("Negative:[%d]\n", -762534);
 	return(0);
 }
