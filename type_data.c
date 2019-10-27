@@ -8,9 +8,9 @@
 */
 void printchar(va_list argumentos)
 {
-	int st;
+	char st;
 
-	st = va_arg(argumentos, int);
+	st = (char) va_arg(argumentos, int);
 	_putchar(st);
 }
 
@@ -25,6 +25,9 @@ void printstring(va_list argumentos)
 	int i = 0;
 
 	st = va_arg(argumentos, char *);
+
+	if (st == NULL)
+		st = "(null)";
 	while (st[i] != '\0')
 	{
 		_putchar(st[i]);
