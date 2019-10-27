@@ -70,6 +70,7 @@ int _printf(const char *format, ...)
 {
 	va_list argumentos;
 	int i = 0, j;
+	int d = 0;
 
 	op_t ops[] = {
 		{"c", printchar},
@@ -108,13 +109,15 @@ int _printf(const char *format, ...)
 			}
 			/*si el caracter siguiente es % avanzo 1 pos*/
 			if(format[i + 1] == 37)
-				i++;
+			{	i++;
+				d = d + 1; /* resto lo que me mueva*/
+			}
 		}
 		_putchar(format[i]);
 		i++;
 	}
 	
-	return (i);
+	return (i - d);
 }
 
 int main()
