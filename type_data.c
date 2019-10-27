@@ -2,6 +2,10 @@
 #include <stdarg.h>
 #include "holberton.h"
 
+/**
+* printchar - function that print a char
+* @argumentos : type of argument
+*/
 void printchar(va_list argumentos)
 {
 	int st;
@@ -9,6 +13,11 @@ void printchar(va_list argumentos)
 	st = va_arg(argumentos, int);
 	_putchar(st);
 }
+
+/**
+* printstring - function that print a string
+* @argumentos : type of argument
+*/
 
 void printstring(va_list argumentos)
 {
@@ -22,6 +31,11 @@ void printstring(va_list argumentos)
 		i++;
 	}
 }
+
+/**
+* printint - function that print a int
+* @argumentos : type of argument
+*/
 
 void printint(va_list argumentos)
 {

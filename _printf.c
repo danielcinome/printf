@@ -2,18 +2,19 @@
 #include <stdarg.h>
 #include "holberton.h"
 
+/**
+* _printf - function that produces output according to a format.
+* @format : type of format for print
+* Return: length of string
+*/
+
 int _printf(const char *format, ...)
 {
 	va_list argumentos;
-	int i = 0, j;
-	int d = 0;
+	int i = 0, j = 0, d = 0;
 
-	op_t ops[] = {
-		{"c", printchar},
-		{"s", printstring},
-		{"i", printint},
-		{"d", printint},
-		{NULL, NULL}
+	op_t ops[] = {{"c", printchar}, {"s", printstring},
+	{"i", printint}, {"d", printint}, {NULL, NULL}
 	};
 	va_start(argumentos, format);
 	while (format[i]) /* recorrer format */
@@ -28,7 +29,6 @@ int _printf(const char *format, ...)
 		}
 		if (format[i] == 37)
 		{
-			j = 0;
 			if (format[i + 1] != 37) /*Si el caracter siguiente no es %*/
 			{
 				while (ops[j].op != NULL)
@@ -43,7 +43,6 @@ int _printf(const char *format, ...)
 				}
 
 			}
-
 			if (format[i + 1] == 37) /*si el caracter siguiente es % avanzo 1 pos*/
 			{
 				i++;
@@ -53,5 +52,6 @@ int _printf(const char *format, ...)
 		_putchar(format[i]);
 		i++;
 	}
+	va_end(argumentos);
 	return (i - d);
 }
