@@ -1,0 +1,41 @@
+.TH PRINTF 1 "27 Oct 2019" "0.32" "User commands"
+.SH NAME
+.B printf
+- formant and print data
+.SH SYNOPSIS
+.B printf 
+.I FORMAT [ARGUMENT]
+.br
+.B printf
+.I OPTION
+.SH DESCRIPTION
+Print ARGUMENTS(s) according to FORMAT, or execute according to OPTION:
+.PP
+.B --help
+display this help and exit
+.PP
+.B --version
+.br
+	output version information and exit
+.PP
+Interpreted sequence are:
+.PP
+\\"	double quote
+.PP
+\\\\	backslash
+.PP
+%%	a single %
+.PP
+%c	print a character
+.PP
+%d	print decimals but the integer part
+.PP
+%i	print integer
+.PP
+%s	print strings
+.SH OPTIONS
+	don't other options
+.SH BUGS
+No known bugs.
+.SH AUTHOR
+Daniel Angarita, Paula Fuentes.
