@@ -44,6 +44,8 @@ int _printf(const char *format, ...)
 					}
 					j++;
 				}
+				if (format[i] != 32 && a != 2)
+					a = 0;
 			}
 			if (format[i] == 37) /*si el caracter siguiente es % avanzo 1 pos*/
 			{
