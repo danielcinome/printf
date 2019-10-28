@@ -17,7 +17,13 @@ int _printf(const char *format, ...)
 	{"i", printint}, {"d", printint}, {NULL, NULL}
 	};
 
+	if (format == NULL)
+		return (-1);
+
 	va_start(argumentos, format);
+	if (argumentos == NULL)
+		return (-1);
+
 	while (format[i]) /* recorrer format */
 	{
 		if (format[i] == 37)
