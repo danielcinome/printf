@@ -24,36 +24,38 @@ int _printf(const char *format, ...)
 	if (argumentos == NULL)
 		return (-1);
 
-	while (format[i]) /* recorrer format */
+	while (format && format[i]) /* recorrer format */
 	{
 		if (format[i] == 37 || a == 1)
 		{
-			if (format[i + 1] != 37) /*Si el caracter siguiente no es %*/
+		i++;
+			if (format[i] != 37) /*Si el caracter siguiente no es %*/
 			{
 				j = 0;
 				a = 1;
 				while (ops[j].op != NULL)
 				{
-					if (format[i + 1] == *(ops[j].op))
+					if (format[i] == *(ops[j].op))
 					{
 						c = (ops[j].f)(argumentos);
-						i = i + 2;
-						a = 0;
+						va_end(argumentos);
+						a = 2;
 						break;
 					}
 					j++;
 				}
 			}
-			if (format[i + 1] == 37) /*si el caracter siguiente es % avanzo 1 pos*/
+			if (format[i] == 37) /*si el caracter siguiente es % avanzo 1 pos*/
 			{
 				a = 0;
-				i++;
 			}
 		}
 		if (a == 0)
 		_putchar(format[i]);
 		i++;
 		d++;
+		if (a == 2)
+			a = 0;
 	}
 	va_end(argumentos);
 	return (d + c);
