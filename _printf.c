@@ -11,7 +11,7 @@
 int _printf(const char *format, ...)
 {
 	va_list argumentos;
-	int i = 0, j = 0, c = 0, d = 0, space =0;
+	int i = 0, j = 0, c = 0, d = 0;
 
 	op_t ops[] = {{"c", printchar}, {"s", printstring},
 	{"i", printint}, {"d", printd}, {NULL, NULL}
@@ -27,7 +27,7 @@ int _printf(const char *format, ...)
 	while (format[i]) /* recorrer format */
 	{
 		if (format[i] == 37)
-		{	
+		{
 			if (format[i + 1] != 37) /*Si el caracter siguiente no es %*/
 			{
 				while (ops[j].op != NULL)
