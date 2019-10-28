@@ -12,16 +12,17 @@
 typedef struct op
 {
 	char *op;
-	void (*f)(va_list);
+	int (*f)(va_list);
 } op_t;
 
 int _putchar(char c);
 int _printf(const char *format, ...);
 void op(char format);
 
-void printchar(va_list argumentos);
-void printstring(va_list argumentos);
-void printint(va_list argumentos);
+int printchar(va_list argumentos);
+int printstring(va_list argumentos);
+int printint(va_list argumentos);
+
 
 #endif
 

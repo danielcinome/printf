@@ -5,42 +5,45 @@
 /**
 * printchar - function that print a char
 * @argumentos : type of argument
+* Return: number of character
 */
-void printchar(va_list argumentos)
+int printchar(va_list argumentos)
 {
 	char st;
 
 	st = (char) va_arg(argumentos, int);
 	_putchar(st);
+	return (1);
 }
 
 /**
 * printstring - function that print a string
 * @argumentos : type of argument
+* Return: number of character
 */
 
-void printstring(va_list argumentos)
+int printstring(va_list argumentos)
 {
 	char *st;
 	int i = 0;
 
 	st = va_arg(argumentos, char *);
 
-	if (st == NULL)
-		st = "(null)";
 	while (st[i] != '\0')
 	{
 		_putchar(st[i]);
 		i++;
 	}
+	return (i);
 }
 
 /**
 * printint - function that print a int
 * @argumentos : type of argument
+* Return: number of character
 */
 
-void printint(va_list argumentos)
+int printint(va_list argumentos)
 {
 	int n, a, b, c, d, s[1000000];
 
@@ -78,4 +81,5 @@ void printint(va_list argumentos)
 			_putchar(s[c] + '0');
 		}
 	}
+	return (d);
 }
