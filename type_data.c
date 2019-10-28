@@ -11,7 +11,7 @@ int printchar(va_list argumentos)
 {
 	char st;
 
-	st = (char) va_arg(argumentos, int);
+	st = va_arg(argumentos, int);
 	_putchar(st);
 	return (1);
 }
