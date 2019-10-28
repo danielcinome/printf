@@ -39,6 +39,8 @@ int _printf(const char *format, ...)
 						break;
 					}
 					j++;
+					if (ops[j].op == NULL)
+						return (-1);
 				}
 
 			}
