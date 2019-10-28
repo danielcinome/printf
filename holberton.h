@@ -22,6 +22,7 @@ void op(char format);
 int printchar(va_list argumentos);
 int printstring(va_list argumentos);
 int printint(va_list argumentos);
+int printd(va_list argumentos);
 
 
 #endif
