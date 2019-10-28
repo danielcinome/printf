@@ -38,7 +38,6 @@ int _printf(const char *format, ...)
 					if (format[i] == *(ops[j].op))
 					{
 						c = (ops[j].f)(argumentos);
-						va_end(argumentos);
 						a = 2;
 						break;
 					}
