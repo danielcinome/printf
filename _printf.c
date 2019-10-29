@@ -23,11 +23,12 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] == 37 || a == 1)
 		{
+			if (format[i] == 37 && format[i + 1] == '\0')
+				return (-1);
 			if (a != 1)
 				i++;
 			if (format[i] != 37) /*Si el caracter siguiente no es %*/
-			{
-				j = 0;
+			{	j = 0;
 				a = 1;
 				while (ops[j].op != NULL)
 				{
@@ -54,9 +55,8 @@ int _printf(const char *format, ...)
 				a = 0;
 		}
 		if (a == 0)
-		{
-		_putchar(format[i]);
-		d++;
+		{	_putchar(format[i]);
+			d++;
 		}
 		i++;
 		if (a == 2)
