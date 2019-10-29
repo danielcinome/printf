@@ -11,7 +11,7 @@
 int _printf(const char *format, ...)
 {
 	va_list argumentos;
-	int i = 0, j = 0, c = 0, d = 0, a = 0;
+	int i = 0, j = 0, c = 0, d = 0, a = 0, cont = 0;
 
 	op_t ops[] = {{"c", printchar}, {"s", printstring},
 	{"i", printint}, {"d", printd}, {NULL, NULL}
@@ -35,6 +35,7 @@ int _printf(const char *format, ...)
 				{
 					if (format[i] == *(ops[j].op))
 					{	c = (ops[j].f)(argumentos);
+						cont = cont + c;
 						a = 2;
 						break;
 					}
@@ -64,5 +65,5 @@ int _printf(const char *format, ...)
 			a = 0;
 	}
 	va_end(argumentos);
-	return (d + c);
+	return (d + cont);
 }
