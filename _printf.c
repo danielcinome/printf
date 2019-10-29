@@ -28,7 +28,8 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] == 37 || a == 1)
 		{
-		i++;
+			if (a != 1)
+				i++;
 			if (format[i] != 37) /*Si el caracter siguiente no es %*/
 			{
 				j = 0;
