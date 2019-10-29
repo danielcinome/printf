@@ -18,7 +18,7 @@ int printchar(va_list argumentos)
 
 /**
 * printstring - function that print a string
-* @argumentos : type of argument
+* @argumentos: type of argument
 * Return: number of character
 */
 
@@ -41,15 +41,16 @@ int printstring(va_list argumentos)
 
 /**
 * printint - function that print a int
-* @argumentos : type of argument
+* @i: type of argument
 * Return: number of character
 */
 
-int printint(va_list argumentos)
+int printint(va_list i)
 {
 	int n, a, b, c, d, s[1000000];
 
-	n = va_arg(argumentos, int);
+	n = va_arg(i, int);
+
 	if (n < 0)  /*si el número es negativo*/
 	{
 		_putchar('-');
@@ -88,15 +89,16 @@ int printint(va_list argumentos)
 
 /**
 * printd - function that print a int
-* @argumentos : type of argument
+* @i : type of argument
 * Return: number of character
 */
 
-int printd(va_list argumentos)
+int printd(va_list i)
 {
 	int n, a, b, c, d, s[1000000];
 
-	n = va_arg(argumentos, int);
+	n = va_arg(i, int);
+
 	if (n < 0)  /*si el número es negativo*/
 	{
 		_putchar('-');
