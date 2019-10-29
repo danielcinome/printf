@@ -11,7 +11,7 @@ int printchar(va_list argumentos)
 {
 	char st;
 
-	st = va_arg(argumentos, int);
+	st = (char) va_arg(argumentos, int);
 	_putchar(st);
 	return (1);
 }
@@ -28,6 +28,8 @@ int printstring(va_list argumentos)
 	int i = 0;
 
 	st = va_arg(argumentos, char *);
+	if (st == NULL)
+		st = "(null)";
 
 	while (st[i] != '\0')
 	{

@@ -52,7 +52,6 @@ int _printf(const char *format, ...)
 		}
 		if (format[i] == '%' || flag == 1)
 		{
-			d++;
 			f = get_op_func(&format[i + 1]);
 			if (f != NULL)
 			{
