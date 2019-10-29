@@ -24,7 +24,7 @@ int _printf(const char *format, ...)
 	if (argumentos == NULL)
 		return (-1);
 
-	while (format && format[i]) /* recorrer format */
+	while (format[i]) /* recorrer format */
 	{
 		if (format[i] == 37 || a == 1)
 		{
