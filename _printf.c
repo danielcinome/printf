@@ -16,11 +16,9 @@ int _printf(const char *format, ...)
 	op_t ops[] = {{"c", printchar}, {"s", printstring},
 	{"i", printint}, {"d", printd}, {NULL, NULL}
 	};
-	if (format == NULL)
+	if (format == NULL || argumentos == NULL)
 		return (-1);
 	va_start(argumentos, format);
-	if (argumentos == NULL)
-		return (-1);
 	while (format && format[i]) /* recorrer format */
 	{
 		if (format[i] == 37 || a == 1)
