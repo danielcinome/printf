@@ -34,26 +34,26 @@ int _printf(const char *format, ...)
 				while (ops[j].op != NULL)
 				{
 					if (format[i] == *(ops[j].op))
-					{
-						c = (ops[j].f)(argumentos);
+					{	c = (ops[j].f)(argumentos);
 						a = 2;
 						break;
 					}
 					j++;
 				}
 				if (format[i] != 32 && a != 2)
-				{
-					a = 0;
+				{	a = 0;
 					if (format[i + 1] != 37)
-						d++;
+					{	d++;
+						_putchar(37);
+					}
 					if (format[i + 1] == 32)
-						d++;
+					{	d++;
+						_putchar(32);
+					}
 				}
 			}
 			if (format[i] == 37) /*si el caracter siguiente es % avanzo 1 pos*/
-			{
 				a = 0;
-			}
 		}
 		if (a == 0)
 		{
