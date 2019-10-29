@@ -52,9 +52,11 @@ int _printf(const char *format, ...)
 			}
 		}
 		if (a == 0)
+		{
 		_putchar(format[i]);
-		i++;
 		d++;
+		}
+		i++;
 		if (a == 2)
 			a = 0;
 	}
