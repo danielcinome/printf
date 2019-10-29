@@ -42,11 +42,10 @@ int _printf(const char *format, ...)
 				}
 				if (format[i] != 32 && a != 2)
 				{	a = 0;
-					if (format[i + 1] != 37)
-					{	d++;
+					/*if (format[i + 1] != 37)*/
+						d++;
 						_putchar(37);
-					}
-					if (format[i + 1] == 32)
+					if (format[i - 1] == 32)
 					{	d++;
 						_putchar(32);
 					}
