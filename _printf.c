@@ -16,14 +16,11 @@ int _printf(const char *format, ...)
 	op_t ops[] = {{"c", printchar}, {"s", printstring},
 	{"i", printint}, {"d", printd}, {NULL, NULL}
 	};
-
 	if (format == NULL)
 		return (-1);
-
 	va_start(argumentos, format);
 	if (argumentos == NULL)
 		return (-1);
-
 	while (format && format[i]) /* recorrer format */
 	{
 		if (format[i] == 37 || a == 1)
@@ -45,7 +42,13 @@ int _printf(const char *format, ...)
 					j++;
 				}
 				if (format[i] != 32 && a != 2)
+				{
 					a = 0;
+					if (format[i + 1] != 37)
+						d++;
+					if (format[i + 1] == 32)
+						d++;
+				}
 			}
 			if (format[i] == 37) /*si el caracter siguiente es % avanzo 1 pos*/
 			{
