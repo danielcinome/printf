@@ -14,6 +14,12 @@ int bin(va_list argumentos)
 
 	n = va_arg(argumentos, int);
 
+	if (n == 0)
+	{
+		_putchar(st[i + 1] == '0');
+		i++;
+	}
+
 	while (n != 0)
 	{
 		mod = n % 2;
