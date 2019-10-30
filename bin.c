@@ -10,7 +10,7 @@
 int bin(va_list argumentos)
 {
 	int st[1000000];
-	unsigned int mod, n, j, i = 0;
+	int mod, n, j, i = 0;
 
 	n = va_arg(argumentos, int);
 
@@ -28,7 +28,7 @@ int bin(va_list argumentos)
 		i++;
 	}
 
-	for (j = (i - 1) ; j != 0 ; j--)
+	for (j = (i - 1) ; j >= 0 ; j--)
 	{
 		_putchar(st[j] + '0');
 	}
