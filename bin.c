@@ -33,6 +33,6 @@ int bin(va_list argumentos)
 	{
 		_putchar(st[j] + '0');
 	}
-
+	va_end(argumentos);
 	return (i);
 }
