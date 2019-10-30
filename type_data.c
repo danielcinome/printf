@@ -47,39 +47,32 @@ int printstring(va_list argumentos)
 
 int printint(va_list i)
 {
-	int n, b, c, d, s[1000000];
+	int a[10];
+	int j, m, n, sum, d;
 
 	n = va_arg(i, int);
-
-	if (n < 0)  /*si el número es negativo*/
+	d = 0;
+	m = 1000000000;
+	a[0] = n / m;
+	for (j = 1; j < 10; j++)
+	{
+		m /= 10;
+		a[j] = (n / m) % 10;
+	}
+	if (n < 0)
 	{
 		_putchar('-');
-		n = n * -1; /*multiplico por -1 para poder quitar el signo*/
-	}
-	d = 0;
-
-	if (n <= 9)
-	{
-		_putchar(n + '0');
 		d++;
-		return (d);
+		for (j = 0; j < 10; j++)
+			a[j] *= -1;
 	}
-	else
+	for (j = 0, sum = 0; j < 10; j++)
 	{
-		while (n > 9)
+		sum += a[j];
+		if (sum != 0 || j == 9)
 		{
-			b = n % 10;
-			n = n / 10;
-			s[d] = b;
-			if (n <= 9)
-			{
-				s[d + 1] = n;
-			}
-			++d;
-		}
-		for (c = d ; c >= 0 ; c--)
-		{
-			_putchar(s[c] + '0');
+			_putchar('0' + a[j]);
+			d++;
 		}
 	}
 	return (d);
