@@ -14,7 +14,7 @@ int _printf(const char *format, ...)
 	int i = 0, j = 0, c = 0, d = 0, a = 0, cont = 0;
 
 	op_t ops[] = {{"c", printchar}, {"s", printstring},
-	{"i", printint}, {"d", printint}, {'R', rot13}, {NULL, NULL}
+	{"i", printint}, {"d", printint}, {"b", bin}, {NULL, NULL}
 	};
 	if (format == NULL || argumentos == NULL)
 		return (-1);
