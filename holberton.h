@@ -23,6 +23,7 @@ int printchar(va_list argumentos);
 int printstring(va_list argumentos);
 int printint(va_list argumentos);
 int printd(va_list argumentos);
+char *rot13(char *p);
 
 
 #endif
