@@ -10,9 +10,10 @@
 int bin(va_list argumentos)
 {
 	int st[1000000];
-	int mod, n, j, i = 0;
+	int mod, j, i = 0;
+	unsigned int n;
 
-	n = va_arg(argumentos, int);
+	n = va_arg(argumentos, unsigned int);
 
 	if (n == 0)
 	{
