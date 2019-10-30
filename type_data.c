@@ -47,7 +47,7 @@ int printstring(va_list argumentos)
 
 int printint(va_list i)
 {
-	int n, a, b, c, d, s[1000000];
+	int n, b, c, d, s[1000000];
 
 	n = va_arg(i, int);
 
@@ -57,62 +57,12 @@ int printint(va_list i)
 		n = n * -1; /*multiplico por -1 para poder quitar el signo*/
 	}
 	d = 0;
-	a = n / 10;
-	b = n % 10;
-	if (a <= 9)
-	{
-		s[0] = b;
-		s[1] = a;
-		_putchar(s[1] + '0');
-		_putchar(s[0] + '0');
-	}
-	else
-	{
-		while (n > 9)
-		{
-			b = n % 10;
-			n = n / 10;
-			s[d] = b;
-			if (n <= 9)
-			{
-				s[d + 1] = n;
-			}
-			++d;
-		}
-		for (c = d ; c >= 0 ; c--)
-		{
-			_putchar(s[c] + '0');
-		}
-	}
-	return (d);
-}
 
-/**
-* printd - function that print a int
-* @i : type of argument
-* Return: number of character
-*/
-
-int printd(va_list i)
-{
-	int n, a, b, c, d, s[1000000];
-
-	n = va_arg(i, int);
-
-	if (n < 0)  /*si el número es negativo*/
+	if (n <= 9)
 	{
-		_putchar('-');
-		n = n * -1; /*multiplico por -1 para poder quitar el signo*/
-	}
-	d = 0;
-	a = n / 10;
-	b = n % 10;
-	if (a <= 9)
-	{
-		s[0] = b;
-		s[1] = a;
-		_putchar(s[1] + '0');
-		_putchar(s[0] + '0');
+		_putchar(n + '0');
+		d++;
+		return (d);
 	}
 	else
 	{
