@@ -13,8 +13,8 @@ int _printf(const char *format, ...)
 	va_list argumentos;
 	int i = 0, j = 0, c = 0, d = 0, a = 0, cont = 0;
 
-	op_t ops[] = {{"c", printchar}, {"s", printstring},
-	{"i", printint}, {"d", printint}, {"b", bin}, {NULL, NULL}
+	op_t ops[] = {{"c", printchar}, {"s", printstring}, {"o", print_oct}, {"x", print_hex},
+		{"X", print_Hex}, {"i", printint}, {"d", printint}, {"b", bin}, {"u", print_un}, {NULL, NULL}
 	};
 	if (format == NULL || argumentos == NULL)
 		return (-1);

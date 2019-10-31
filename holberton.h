@@ -25,6 +25,10 @@ int printint(va_list argumentos);
 int printd(va_list argumentos);
 char *rot13(char *p);
 int bin(va_list argumentos);
+int print_un(va_list argumentos);
+int print_oct(va_list argumentos);
+int print_hex(va_list argumentos);
+int print_Hex(va_list argumentos);
 
 
 #endif
